@@ -17,10 +17,10 @@
     "docker-stop": "docker-compose stop"
   },
   "dependencies": {
-    "@mickl/socket.io-nats-adapter": "^0.0.10",
     "debug": "~4.3.1"
   },
   "devDependencies": {
+    "@mickl/socket.io-nats-adapter": "^0.0.10",
     "@types/expect": "^24.3.0",
     "@types/mocha": "^8.2.1",
     "@types/node": "^14.14.33",

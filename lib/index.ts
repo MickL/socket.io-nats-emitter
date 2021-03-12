@@ -1,6 +1,9 @@
 import { Client } from "nats";
 import * as _debug from "debug";
-import { NatsAdapterOptionsDto, SUBJECT_KEY } from "socket.io-nats-adapter";
+import {
+  NatsAdapterOptionsDto,
+  SUBJECT_KEY,
+} from "@mickl/socket.io-nats-adapter";
 import { BroadcastFlags, Room, SocketId } from "socket.io-adapter";
 import { Packet, PacketType } from "socket.io-parser";
 

@@ -17,7 +17,7 @@ If you have any issues or feature requests please create a pull request.
 ## How to use
 
 ```bash
-yarn add nats socket.io-nats-emitter
+yarn add nats mickl@socket.io-nats-emitter
 ```
 
 ```ts

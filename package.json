@@ -1,6 +1,6 @@
 {
-  "name": "socket.io-nats-emitter",
-  "version": "0.0.0",
+  "name": "mickl@socket.io-nats-emitter",
+  "version": "0.0.1",
   "description": "NATS emitter for Socket.io",
   "license": "MIT",
   "files": [

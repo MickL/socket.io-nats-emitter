@@ -1,4 +1,3 @@
-
 # socket.io-nats-emitter
 
 `socket.io-nats-emitter` allows you to communicate with Socket.io servers easily without access to Socket.io
@@ -17,14 +16,25 @@ If you have any issues or feature requests please create a pull request.
 ## How to use
 
 ```bash
-yarn add nats mickl@socket.io-nats-emitter
+yarn add nats @mickl/socket.io-nats-emitter
 ```
 
 ```ts
 import { connect } from 'nats';
+import { createEmitter } from '@mickl/socket.io-nats-emitter';
 
 const client = connect('localhost');
-// TODO
+const io     = createEmitter(client);
+
+// Emit
+io.emit('event');
+
+// Emit to room or socket-id
+io.to('room').emit('event');
+
+// Namespaces
+const nspIo = io.of('/admin');
+nspIo.emit('event');
 ```
 
 ## License

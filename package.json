@@ -1,0 +1,42 @@
+{
+  "name": "socket.io-nats-adapter",
+  "version": "0.0.6",
+  "description": "NATS emitter for Socket.io",
+  "license": "MIT",
+  "files": [
+    "dist/"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "test": "tsc && nyc ts-mocha test/index.ts --exit",
+    "format:check": "prettier --check 'lib/**/*.ts' 'test/**/*.ts'",
+    "format:fix": "prettier --write 'lib/**/*.ts' 'test/**/*.ts'",
+    "prepack": "tsc",
+    "docker-start": "docker-compose up -d",
+    "docker-stop": "docker-compose stop"
+  },
+  "dependencies": {
+    "debug": "~4.3.1"
+  },
+  "devDependencies": {
+    "@types/expect": "^24.3.0",
+    "@types/mocha": "^8.2.1",
+    "@types/node": "^14.14.33",
+    "expect.js": "^0.3.1",
+    "mocha": "^8.3.2",
+    "nats": "^1.4.12",
+    "nyc": "^15.1.0",
+    "prettier": "^2.2.1",
+    "socket.io": "^4.0.0",
+    "socket.io-client": "^4.0.0",
+    "ts-mocha": "^8.0.0",
+    "typescript": "^4.2.3"
+  },
+  "peerDependencies": {
+    "nats": "^1.4.12"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  }
+}

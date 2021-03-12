@@ -4,11 +4,10 @@
 
 ![Emitter diagram](assets/emitter.png)
 
-It must be used in conjunction with [socket.io-nats-adapter](https://github.com/MickL/socket.io-nats-adapter).
+It must be used in conjunction with [@mickl/socket.io-nats-adapter](https://github.com/MickL/socket.io-nats-adapter).
 
 The current version is compatible with:
 
-- [Socket.IO](https://github.com/socketio/socket.io) 4.x, but should also work with 2.x and 3.x
 - [NATS.js](https://github.com/nats-io/nats.js/) 1.4.x, not compatible to 2.x
 
 If you have any issues or feature requests please create a pull request.

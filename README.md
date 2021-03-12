@@ -30,7 +30,3 @@ const client = connect('localhost');
 ## License
 
 MIT
-
-## License
-
-MIT

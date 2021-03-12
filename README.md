@@ -3,7 +3,7 @@
 
 `socket.io-nats-emitter` allows you to communicate with Socket.io servers easily without access to Socket.io
 
-![Emitter diagram](../../../Desktop/socket.io-emitter-master/assets/emitter.png)
+![Emitter diagram](assets/emitter.png)
 
 It must be used in conjunction with [socket.io-nats-adapter](https://github.com/MickL/socket.io-nats-adapter).
 

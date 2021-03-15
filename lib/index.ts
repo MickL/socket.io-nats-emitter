@@ -1,9 +1,6 @@
 import { Client } from "nats";
 import * as _debug from "debug";
-import {
-  NatsAdapterOptionsDto,
-  SUBJECT_KEY,
-} from "@mickl/socket.io-nats-adapter";
+import { NatsAdapterDto, SUBJECT_KEY } from "@mickl/socket.io-nats-adapter";
 import { BroadcastFlags, Room, SocketId } from "socket.io-adapter";
 import { Packet } from "socket.io-parser";
 
@@ -61,7 +58,7 @@ export class NatsEmitter {
       nsp: this.nsp,
     };
 
-    const dto: NatsAdapterOptionsDto = {
+    const dto: NatsAdapterDto = {
       fromUid: this.uid,
       packet,
       opts: {

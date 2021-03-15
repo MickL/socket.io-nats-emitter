@@ -224,10 +224,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@mickl/socket.io-nats-adapter@^0.0.10":
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/@mickl/socket.io-nats-adapter/-/socket.io-nats-adapter-0.0.10.tgz#7acfcb8aebba1c16c22b694a1ea36f2c627d2418"
-  integrity sha512-PohvSl9kGNJwGrdyKc6ySis0jq6ZjxdSGcSzeHvIMZJkel3KDeEUiSikYWMtF1SlxhGWdjd4bfnEZBGP0MTndw==
+"@mickl/socket.io-nats-adapter@^0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@mickl/socket.io-nats-adapter/-/socket.io-nats-adapter-0.0.11.tgz#b1f2279543f1e63724921abe681edc63c194b79f"
+  integrity sha512-296XefjdmhXK951cT5H7majj7ZAju/i4AeqzKrJU4XkSCq6WrVkDLB0rny942U3S7qxfxikJDMfeO5TIbd5SpA==
   dependencies:
     debug "~4.3.1"
     socket.io-adapter "^2.2.0"

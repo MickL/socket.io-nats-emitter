@@ -6,8 +6,8 @@ import { Socket } from "socket.io-client/build/socket";
 import { AddressInfo } from "net";
 import * as expect from "expect.js";
 import { connect } from "nats";
-import { createAdapter } from "socket.io-nats-adapter";
-import { createEmitter, NatsEmitter } from "../lib";
+import { createAdapter } from "@mickl/socket.io-nats-adapter";
+import { NatsEmitter } from "../lib";
 
 const natsUrl = "localhost";
 const connectOptions: ClientOpts = {
@@ -125,7 +125,7 @@ async function init(natsClient: Client, options?: ClientOpts) {
   socket1 = created1.socket;
   socket2 = created2.socket;
 
-  emitter = createEmitter(natsClient);
+  emitter = new NatsEmitter(natsClient);
 }
 
 function noop() {}

@@ -6,20 +6,6 @@ import { Packet } from "socket.io-parser";
 
 const debug = _debug("socket.io-nats-emitter");
 
-export interface NatsEmitterOptions {
-  key?: string;
-  nsp?: string;
-}
-
-/**
- * Returns a NATS Adapter function
- *
- * TODO: Add return type https://github.com/socketio/socket.io/issues/3796
- */
-export const createEmitter = (client: Client, opts?: NatsEmitterOptions) => {
-  return new NatsEmitter(client, opts?.nsp, opts?.key);
-};
-
 export class NatsEmitter {
   private subject: string;
   private uid = "socket.io-nats-emitter";

@@ -23,7 +23,7 @@ import { connect } from 'nats';
 import { createEmitter } from '@mickl/socket.io-nats-emitter';
 
 const client = connect('localhost');
-const io     = createEmitter(client);
+const io     = new NatsEmitter(client);
 
 // Emit
 io.emit('event');

@@ -1,4 +1,4 @@
-import { Client, ClientOpts } from "nats";
+import { ConnectionOptions, NatsConnection } from "nats";
 import { createServer } from "http";
 import { Namespace, Server } from "socket.io";
 import { io } from "socket.io-client";
@@ -6,14 +6,14 @@ import { Socket } from "socket.io-client/build/socket";
 import { AddressInfo } from "net";
 import * as expect from "expect.js";
 import { connect } from "nats";
-import { createAdapter } from "@mickl/socket.io-nats-adapter";
+import {
+  createAdapter,
+  NatsAdapterOptions,
+} from "@mickl/socket.io-nats-adapter";
 import { NatsEmitter } from "../lib";
+import { Connect } from "nats/lib/nats-base-client/protocol";
 
-const natsUrl = "localhost";
-const connectOptions: ClientOpts = {
-  // json: true,
-  // preserveBuffers: true,
-};
+const connectOptions: ConnectionOptions = {};
 
 let namespace1, namespace2;
 let client1, client2;
@@ -22,8 +22,8 @@ let emitter: NatsEmitter;
 
 describe("socket.io-nats-emitter", () => {
   beforeEach(async () => {
-    const natsClient = connect(natsUrl, connectOptions);
-    await init(natsClient);
+    const connection = await connect(connectOptions);
+    await init(connection);
   });
   afterEach(cleanup);
 
@@ -87,8 +87,8 @@ describe("socket.io-nats-emitter", () => {
 });
 
 async function create(
-  natsClient: Client,
-  options?: ClientOpts,
+  connection: NatsConnection,
+  options?: NatsAdapterOptions,
   nsp = "/"
 ): Promise<{ namespace: Namespace; client: Socket; socket: any }> {
   return new Promise((resolve) => {
@@ -96,7 +96,7 @@ async function create(
     const ioServer = new Server(httpServer);
 
     // @ts-ignore
-    ioServer.adapter(createAdapter(natsClient, options));
+    ioServer.adapter(createAdapter(connection, options));
 
     httpServer.listen((a) => {
       const port = (<AddressInfo>httpServer.address()).port;
@@ -112,9 +112,9 @@ async function create(
   });
 }
 
-async function init(natsClient: Client, options?: ClientOpts) {
-  const created1 = await create(natsClient, options);
-  const created2 = await create(natsClient, options);
+async function init(connection: NatsConnection) {
+  const created1 = await create(connection);
+  const created2 = await create(connection);
 
   namespace1 = created1.namespace;
   namespace2 = created2.namespace;
@@ -125,7 +125,7 @@ async function init(natsClient: Client, options?: ClientOpts) {
   socket1 = created1.socket;
   socket2 = created2.socket;
 
-  emitter = new NatsEmitter(natsClient);
+  emitter = new NatsEmitter(connection);
 }
 
 function noop() {}

@@ -1,4 +1,4 @@
-import { Client } from "nats";
+import { NatsConnection, JSONCodec } from "nats";
 import * as _debug from "debug";
 import { NatsAdapterDto, SUBJECT_KEY } from "@mickl/socket.io-nats-adapter";
 import { BroadcastFlags, Room, SocketId } from "socket.io-adapter";
@@ -7,14 +7,15 @@ import { Packet } from "socket.io-parser";
 const debug = _debug("socket.io-nats-emitter");
 
 export class NatsEmitter {
-  private subject: string;
-  private uid = "socket.io-nats-emitter";
   private except: SocketId[] = [];
   private flags: BroadcastFlags = {};
+  private jc = JSONCodec<NatsAdapterDto>();
   private rooms: Room[] = [];
+  private subject: string;
+  private uid = "socket.io-nats-emitter";
 
   constructor(
-    private client: Client,
+    private client: NatsConnection,
     private nsp = "/",
     private key = SUBJECT_KEY
   ) {
@@ -54,10 +55,8 @@ export class NatsEmitter {
       },
     };
 
-    const msg = JSON.stringify(dto);
-
     debug("Publishing message to subject '%s'", this.subject);
-    this.client.publish(this.subject, msg);
+    this.client.publish(this.subject, this.jc.encode(dto));
 
     this.rooms = [];
     this.except = [];

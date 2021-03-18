@@ -8,7 +8,7 @@ It must be used in conjunction with [@mickl/socket.io-nats-adapter](https://gith
 
 The current version is compatible with:
 
-- [NATS.js](https://github.com/nats-io/nats.js/) 1.4.x, not compatible to 2.x
+- [NATS.js](https://github.com/nats-io/nats.js/) 2.x, for NATS.js 1.x use `@^1.0.0` of this package
 
 If you have any issues or feature requests please create a pull request.
 
@@ -22,8 +22,8 @@ yarn add nats @mickl/socket.io-nats-emitter
 import { connect } from 'nats';
 import { createEmitter } from '@mickl/socket.io-nats-emitter';
 
-const client = connect('localhost');
-const io     = new NatsEmitter(client);
+const connection = await connect();
+const io         = new NatsEmitter(connection);
 
 // Emit
 io.emit('event');

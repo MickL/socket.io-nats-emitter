@@ -1,8 +1,8 @@
 import { NatsConnection, JSONCodec } from "nats";
 import * as _debug from "debug";
-import { NatsAdapterDto, SUBJECT_KEY } from "@mickl/socket.io-nats-adapter";
-import { BroadcastFlags, Room, SocketId } from "socket.io-adapter";
-import { Packet } from "socket.io-parser";
+import type { NatsAdapterDto } from "@mickl/socket.io-nats-adapter";
+import type { BroadcastFlags, Room, SocketId } from "socket.io-adapter";
+import type { Packet } from "socket.io-parser";
 
 const debug = _debug("socket.io-nats-emitter");
 
@@ -17,7 +17,7 @@ export class NatsEmitter {
   constructor(
     private client: NatsConnection,
     private nsp = "/",
-    private key = SUBJECT_KEY
+    private key = 'socketIO',
   ) {
     this.subject = key + "." + nsp;
   }

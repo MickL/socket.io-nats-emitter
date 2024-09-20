@@ -20,7 +20,7 @@ yarn add nats @mickl/socket.io-nats-emitter
 
 ```ts
 import { connect } from 'nats';
-import { createEmitter } from '@mickl/socket.io-nats-emitter';
+import { NatsEmitter } from '@mickl/socket.io-nats-emitter';
 
 const connection = await connect();
 const io         = new NatsEmitter(connection);
